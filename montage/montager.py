@@ -32,5 +32,5 @@ def montager(name_array, dir):
             print(f'Reading in {file}')
             imgplt = img.imread(file)
             iplot = ax[pic].imshow(imgplt)
-            ax[pic].set_axis_off()
-
+            ax[pic].set_xticks([])
+            ax[pic].set_yticks([])
