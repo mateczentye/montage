@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='montage',
+    name='quick_montage',
     author='Máté I. Czentye',
     version='0.0.3',
     author_email='czentyemate@gmail.com',
