@@ -29,15 +29,19 @@ def format_check(
 
 
 def loop_check(
-    name_array: list
+    name_array: list,
+    supported_list: list = ['.jpeg', '.jpg', '.png', '.tiff', '.gif']    
 ):
     """Function loops through the list of given strings
     and filters out all the ones that are not supported
     by replacing them with blank space on the mosaic"""
+    if not isinstance(name_array, (list, np.ndarray, tuple)):
+        raise TypeError('Wrong type was passed, must be a list, or a numpy.ndarray object')
+
     new_array = []
     shape = np.shape(name_array)
     for pic in np.asarray(name_array).flatten():
-        if format_check(pic):
+        if format_check(pic, supported_list):
             new_array.append(pic)
         else:
             new_array.append('.')

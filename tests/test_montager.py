@@ -9,7 +9,7 @@ from montage.montager import montager
 @pytest.mark.exe
 def test_montager_intype():
     with pytest.raises(TypeError):
-        montager('string')
+        montager(name_array=20)
 
 
 @pytest.mark.exe
