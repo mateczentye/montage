@@ -6,6 +6,17 @@ def format_check(
     supported_list: list = ['.jpeg', '.jpg', '.png', '.tiff', '.gif']    
 ):
     """Function to check if the file is a supported format."""
+
+    if not isinstance(file, str):
+        raise TypeError('file is of the wrong format')
+
+    if not isinstance(supported_list, (list, np.ndarray)):
+        raise TypeError('Given support list is of thw wrong type, must be a list')
+
+    check_arr = [True if isinstance(x, str) else False for x in supported_list]
+    if False in check_arr:
+        raise ValueError('supported list contains elements of the wrong format, all must be a string')
+
     check = None
     for ext in supported_list:        
         if ext in file:

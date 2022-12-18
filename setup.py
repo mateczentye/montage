@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='montage',
     author='Máté I. Czentye',
-    version='0.0.1',
+    version='0.0.2',
     author_email='czentyemate@gmail.com',
     license='MIT',
     url='https://github.com/mateczentye/montage',

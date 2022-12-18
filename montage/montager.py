@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.image as img
 import numpy as np
-
-from utilities import loop_check
+import os
+from montage.utilities import loop_check
 
 
 def montager(name_array, dir):
@@ -20,8 +20,22 @@ def montager(name_array, dir):
         try:
             name_array = np.asarray(name_array)
         except Exception as ex:
-            print('Passed name_array is of the wrong type, pass a list or a numpy.ndarray object')
             print(ex)
+            raise TypeError('Passed name_array is of the wrong type, pass a list or a numpy.ndarray object')
+
+    if len(name_array) == 0:
+        raise ValueError('Empty array was given!')
+
+    if not isinstance(dir, str):
+        raise TypeError('dir argument must be a string containing the path to target directory.')
+
+    if not os.path.exists(dir):
+        raise FileExistsError(f'Path of <{dir}> does not exist or unavailable!')
+
+    check_arr = [True if isinstance(x, str) else False for x in name_array.flatten()]
+    if False in check_arr:
+        raise ValueError('Array contains other than file names, please check.')
+
     name_array = loop_check(name_array=name_array)
     fig, ax = plt.subplot_mosaic(name_array, figsize=(20, 20), dpi=150)
     plt.tight_layout()
@@ -34,3 +48,4 @@ def montager(name_array, dir):
             iplot = ax[pic].imshow(imgplt)
             ax[pic].set_xticks([])
             ax[pic].set_yticks([])
+    return fig
