@@ -1,3 +1,2 @@
-matplotlib.pyplot
-matplotlib.image
+matplotlib
 numpy
