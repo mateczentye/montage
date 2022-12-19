@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as img
 import numpy as np
 import os
-from montage.utilities import loop_check
+from utilities import loop_check
 
 
 def montager(name_array, dir):
@@ -36,4 +36,11 @@ def montager(name_array, dir):
             iplot = ax[pic].imshow(imgplt)
             ax[pic].set_xticks([])
             ax[pic].set_yticks([])
+    
+    number = 0
+    while os.path.exists(dir + f'montage_{number}.jpeg'):
+        print(f'File <{dir}/montage_{number}.jpeg> already exists, trying the next number!')
+        number += 1
+
+    plt.savefig(dir + f'montage_{number}.jpeg')
     return fig
