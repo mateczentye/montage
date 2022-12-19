@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as img
 import numpy as np
 import os
-from utilities import loop_check
+from .utilities import loop_check
 
 
 def montager(name_array, dir):
